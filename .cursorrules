@@ -1,0 +1,138 @@
+# LangChain Ecosystem Workshop
+
+> Learning project for the Cursor Agent Factory AI Learning Path
+> **Workshops**: L7 LangChain + L3 LangGraph + L16 LangSmith
+
+## Project Context
+
+This is a **learning workshop** covering the LangChain ecosystem:
+- **LangChain** (0.3+): Agent framework, LCEL chains, tools
+- **LangGraph** (0.2+): Stateful workflows, multi-agent orchestration
+- **LangSmith**: Observability, evaluation, prompt iteration
+
+## Technology Stack
+
+| Component | Version | Purpose |
+|-----------|---------|---------|
+| Python | 3.10+ | Runtime |
+| LangChain | 0.3+ | Agent framework, LCEL |
+| LangGraph | 0.2+ | Stateful graph workflows |
+| LangSmith | 0.1+ | Observability and evaluation |
+| OpenAI | Latest | LLM provider |
+| ChromaDB | Latest | Vector store |
+| Pydantic | 2.0+ | Data validation |
+
+## Learning Objectives
+
+By completing this workshop, you will:
+
+1. **LangChain** (L7 - Fundamentals)
+   - Understand LCEL composition with pipe operator
+   - Build custom tools with @tool decorator
+   - Create chains: prompt | llm | parser
+   - Implement RAG pipelines
+
+2. **LangGraph** (L3 - Intermediate)
+   - Define state schemas with TypedDict and reducers
+   - Build conditional routing and cycles
+   - Implement human-in-the-loop with checkpoints
+   - Design supervisor-worker multi-agent systems
+
+3. **LangSmith** (L16 - Intermediate)
+   - Set up tracing with environment variables
+   - Create datasets for evaluation
+   - Build custom evaluators
+   - Run prompt iteration experiments
+
+## Core Principles
+
+### Code Quality
+- Always use type hints for function parameters and returns
+- Use Google-style docstrings for all public functions
+- Prefer async functions for I/O operations
+- Use Pydantic models for structured outputs
+
+### LangChain Patterns
+- Use LCEL (pipe operator) for chain composition
+- Prefer `ChatOpenAI` over `OpenAI` for chat models
+- Always use `StrOutputParser` or structured output parsers
+- Add proper error handling with fallbacks
+
+### LangGraph Patterns
+- Define state with `TypedDict` and `Annotated` reducers
+- Use `add_messages` reducer for message lists
+- Always set entry point with `set_entry_point()`
+- Use `END` node for graph termination
+- Add `MemorySaver` for checkpointing
+
+### LangSmith Patterns
+- Enable tracing: `LANGCHAIN_TRACING_V2=true`
+- Set project: `LANGCHAIN_PROJECT=project-name`
+- Add metadata to runs for filtering
+- Create datasets for systematic testing
+
+## Workshop Phases
+
+### Phase 1: Concept (30 min each)
+- Understand architecture and mental models
+- Review diagrams and key concepts
+
+### Phase 2: Demo (30 min each)
+- Walk through working examples
+- Understand patterns and best practices
+
+### Phase 3: Exercise (45 min each)
+- Guided hands-on practice
+- Complete starter code exercises
+
+### Phase 4: Challenge (30 min each)
+- Independent problem-solving
+- Build complete applications
+
+### Phase 5: Reflection (15 min each)
+- Review key takeaways
+- Plan next steps
+
+## File Organization
+
+```
+langchain-workshop/
+├── src/
+│   ├── chains/         # LCEL chain examples
+│   ├── agents/         # Tool-using agents
+│   ├── graphs/         # LangGraph workflows
+│   └── evaluation/     # LangSmith evaluation
+├── test/               # Test files
+├── docs/               # Learning guides
+└── .cursor/rules/      # AI coding rules
+```
+
+## Environment Setup
+
+```bash
+# Required environment variables
+export OPENAI_API_KEY=your-openai-key
+export LANGCHAIN_TRACING_V2=true
+export LANGCHAIN_API_KEY=your-langsmith-key
+export LANGCHAIN_PROJECT=langchain-workshop
+```
+
+## Useful Commands
+
+| Command | Description |
+|---------|-------------|
+| `pip install -r requirements.txt` | Install dependencies |
+| `python src/chains/basic_chain.py` | Run basic chain example |
+| `python src/graphs/simple_graph.py` | Run LangGraph example |
+| `pytest test/ -v` | Run all tests |
+
+## Resources
+
+- [LangChain Docs](https://python.langchain.com/docs/)
+- [LangGraph Docs](https://langchain-ai.github.io/langgraph/)
+- [LangSmith Docs](https://docs.smith.langchain.com/)
+
+---
+
+*Part of the Cursor Agent Factory Learning Workshop Ecosystem*
+*Built with Love, Truth, and Beauty*
