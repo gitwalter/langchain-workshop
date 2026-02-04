@@ -36,11 +36,11 @@ def process_message(message: str, temperature: float = 0.7) -> dict[str, Any]:
 
 ```python
 import asyncio
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 async def parallel_calls(prompts: list[str]) -> list[str]:
     """Execute multiple LLM calls in parallel."""
-    llm = ChatOpenAI(model="gpt-4o-mini")
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
     tasks = [llm.ainvoke(prompt) for prompt in prompts]
     results = await asyncio.gather(*tasks)
     return [r.content for r in results]
@@ -62,7 +62,7 @@ class AnalysisResult(BaseModel):
     topics: list[str] = Field(description="Main topics identified")
 
 # Use with LLM
-llm = ChatOpenAI(model="gpt-4o-mini")
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 structured_llm = llm.with_structured_output(AnalysisResult)
 result = structured_llm.invoke("Analyze this text...")
 ```
@@ -177,7 +177,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Validate required variables
-required_vars = ["OPENAI_API_KEY", "LANGCHAIN_API_KEY"]
+required_vars = ["GEMINI_API_KEY"]  # LANGCHAIN_API_KEY optional for tracing
 missing = [v for v in required_vars if not os.getenv(v)]
 if missing:
     raise EnvironmentError(f"Missing: {', '.join(missing)}")
@@ -195,7 +195,7 @@ from unittest.mock import patch, MagicMock
 
 @pytest.fixture
 def mock_llm():
-    with patch("langchain_openai.ChatOpenAI") as mock:
+    with patch("langchain_google_genai.ChatGoogleGenerativeAI") as mock:
         mock.return_value.invoke.return_value.content = "Mocked response"
         yield mock
 
@@ -241,7 +241,7 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 # LangChain
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.tools import tool

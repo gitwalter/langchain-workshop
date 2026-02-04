@@ -24,10 +24,13 @@ python src/chains/basic_chain.py
 
 ## Environment Variables
 
-Create a `.env` file with:
+Set your Gemini API key (FREE tier available at https://aistudio.google.com/app/apikey):
 
 ```bash
-OPENAI_API_KEY=your-openai-key
+# System environment variable (recommended)
+GEMINI_API_KEY=your-gemini-key
+
+# Optional: LangSmith for tracing (L16)
 LANGCHAIN_TRACING_V2=true
 LANGCHAIN_API_KEY=your-langsmith-key
 LANGCHAIN_PROJECT=langchain-workshop

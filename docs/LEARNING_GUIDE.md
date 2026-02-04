@@ -19,7 +19,7 @@ This guide covers the complete LangChain ecosystem for building AI applications:
 LCEL is the declarative way to compose chains using the pipe operator.
 
 ```python
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
@@ -39,9 +39,9 @@ result = chain.invoke({"input": "Hello"})
 ### 1.2 Chat Models vs Completion Models
 
 ```python
-# Chat Model (recommended)
-from langchain_openai import ChatOpenAI
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# Chat Model (recommended - FREE tier)
+from langchain_google_genai import ChatGoogleGenerativeAI
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
 
 # Messages
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -350,10 +350,10 @@ set_llm_cache(InMemoryCache())
 
 ```python
 from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-# Create vector store
-vectorstore = Chroma.from_documents(docs, OpenAIEmbeddings())
+# Create vector store (using free Gemini embeddings)
+vectorstore = Chroma.from_documents(docs, GoogleGenerativeAIEmbeddings(model="models/embedding-001"))
 retriever = vectorstore.as_retriever()
 
 # RAG chain

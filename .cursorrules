@@ -18,7 +18,7 @@ This is a **learning workshop** covering the LangChain ecosystem:
 | LangChain | 0.3+ | Agent framework, LCEL |
 | LangGraph | 0.2+ | Stateful graph workflows |
 | LangSmith | 0.1+ | Observability and evaluation |
-| OpenAI | Latest | LLM provider |
+| Google Gemini | 2.5 Flash | LLM provider (FREE tier) |
 | ChromaDB | Latest | Vector store |
 | Pydantic | 2.0+ | Data validation |
 
@@ -54,7 +54,7 @@ By completing this workshop, you will:
 
 ### LangChain Patterns
 - Use LCEL (pipe operator) for chain composition
-- Prefer `ChatOpenAI` over `OpenAI` for chat models
+- Use `ChatGoogleGenerativeAI` with `gemini-2.5-flash` model
 - Always use `StrOutputParser` or structured output parsers
 - Add proper error handling with fallbacks
 
@@ -111,7 +111,7 @@ langchain-workshop/
 
 ```bash
 # Required environment variables
-export OPENAI_API_KEY=your-openai-key
+export GEMINI_API_KEY=your-gemini-key  # FREE at https://aistudio.google.com/
 export LANGCHAIN_TRACING_V2=true
 export LANGCHAIN_API_KEY=your-langsmith-key
 export LANGCHAIN_PROJECT=langchain-workshop

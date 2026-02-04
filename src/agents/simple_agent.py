@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 
 from pydantic import BaseModel, Field
 from langchain_core.tools import tool
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -132,7 +132,7 @@ def create_agent():
     Returns:
         AgentExecutor ready to run.
     """
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
     
     tools = [calculator, search_web]
     

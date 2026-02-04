@@ -22,7 +22,7 @@ load_dotenv()
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ.setdefault("LANGCHAIN_PROJECT", "langchain-workshop")
 
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
@@ -36,7 +36,7 @@ def create_traced_chain():
     Returns:
         A runnable chain with automatic tracing.
     """
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
     
     prompt = ChatPromptTemplate.from_template(
         """You are a helpful assistant. Answer the question concisely.

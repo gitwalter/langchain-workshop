@@ -45,15 +45,15 @@ def test_state_definition():
 
 
 @pytest.mark.skipif(
-    not pytest.importorskip("langchain_openai", reason="OpenAI not installed"),
-    reason="OpenAI not available"
+    not pytest.importorskip("langchain_google_genai", reason="Google GenAI not installed"),
+    reason="Google GenAI not available"
 )
 def test_mock_llm():
     """Test with mocked LLM."""
     from langchain_core.prompts import ChatPromptTemplate
     from langchain_core.output_parsers import StrOutputParser
     
-    with patch("langchain_openai.ChatOpenAI") as mock_llm:
+    with patch("langchain_google_genai.ChatGoogleGenerativeAI") as mock_llm:
         mock_llm.return_value.invoke.return_value.content = "Mocked response"
         
         # Create chain components

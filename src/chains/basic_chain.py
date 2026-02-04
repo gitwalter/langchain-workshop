@@ -15,7 +15,7 @@ from __future__ import annotations
 import os
 from dotenv import load_dotenv
 
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
@@ -35,7 +35,7 @@ def create_summarize_chain():
         >>> result = chain.invoke({"text": "Long article..."})
         >>> print(result)
     """
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
     
     prompt = ChatPromptTemplate.from_template(
         "Summarize the following text in 2-3 sentences:\n\n{text}"
@@ -59,7 +59,7 @@ def create_summarize_and_translate_chain():
         >>> chain = create_summarize_and_translate_chain()
         >>> result = chain.invoke({"text": "...", "language": "Spanish"})
     """
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
     
     summarize_prompt = ChatPromptTemplate.from_template(
         "Summarize the following text in 2-3 sentences:\n\n{text}"
@@ -96,7 +96,7 @@ def create_custom_chain():
         A runnable chain with your custom logic.
     """
     # TODO: Implement your chain here
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
     
     # Your prompt template
     prompt = ChatPromptTemplate.from_template(
